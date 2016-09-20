@@ -23,14 +23,14 @@ public class FZRYXX extends EventTb{
         this.tb=tb;
         this.id ="gmsfhm";
     }
-    public static void main(String args[]){
-
-        String ans=Simple.getGMSFHM(Description.randomDescription("js_fzryxx"));
-        int start=0,end,len=ans.length();
-        while(start<len){
-            end=Math.min(start+200,len);
-            System.out.println(ans.substring(start,end));
-            start=end;
-        }
-    }
+//    public static void main(String args[]){
+//
+//        String ans=Simple.getGMSFHM(Description.randomDescription("js_fzryxx"));
+//        int start=0,end,len=ans.length();
+//        while(start<len){
+//            end=Math.min(start+200,len);
+//            System.out.println(ans.substring(start,end));
+//            start=end;
+//        }
+//    }
 }

@@ -1,5 +1,7 @@
 package model.event.eventInstance;
 
+import java.util.ArrayList;
+
 import model.event.EventTb;
 
 /**
