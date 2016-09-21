@@ -53,7 +53,7 @@ public class Simple {
         return String.format("not exists ( %s and %s=%s.%s)", codeTb.getDM(value),attr, codeTb.tb, codeTb.dm);
     }
 
-    public static String getGMSFHM(Description des){
+    public static String getGMSFHM(Description des,String frm){
         String ans="";
         String preffix="select";
         for(String s:des.attrs){
@@ -66,6 +66,9 @@ public class Simple {
             ans=ans+preffix+String.format(" %s",s);
             preffix=",";
         }
+        if(frm!=null){
+            ans=ans+preffix+frm;
+        }
         preffix=" where ";
         for(Map.Entry<String,String> entry:des.les.entrySet()){
             ans+=preffix+ Simple.getOPS(entry.getKey(),"<",entry.getValue());
@@ -77,7 +80,7 @@ public class Simple {
         }
         for(Map.Entry<String,String> entry:des.eqs.entrySet()){
             ans+=preffix+Simple.getOPS(entry.getKey(),"=",entry.getValue());
-            preffix="and ";
+            preffix=" and ";
         }
         for(Map.Entry<String,String> entry:des.lks.entrySet()){
             ans+=preffix+Simple.getLKS(entry.getKey(),entry.getValue());
