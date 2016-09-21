@@ -27,6 +27,13 @@ public class Description {
     public Map<String,String> ins;
     public Map<String,String> nes;
 
+    public String getTB(int index){
+        String tb=tbs.get(index);
+        if(tb.contains(" ")){
+            return tb.substring(tb.indexOf(" ")+1);
+        }
+        return tb;
+    }
     public void changeTB(String srcTB,String desTB){
         for(int i=0;i<attrs.size();i++){
             String elem=attrs.get(i);

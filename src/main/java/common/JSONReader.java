@@ -1,6 +1,7 @@
 package common;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import model.Description;
 
@@ -12,8 +13,8 @@ import java.util.Map;
  * Created by xliu on 2016/9/21.
  */
 public class JSONReader {
-    public static Description getDescriptionOne(String inputpath,String stb,String attrs[],String ids[]) throws IOException {
-        BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(new File(inputpath))));
+    public static Description getDescriptionOne(String inputpath,String stb[],String attrs[],String ids[]) throws IOException {
+        BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(new File(inputpath)),"utf-8"));
         String line;
         StringBuffer sb=new StringBuffer();
         while((line=br.readLine())!=null){
@@ -21,9 +22,12 @@ public class JSONReader {
         }
         JSONObject js=JSONObject.parseObject(sb.toString());
         Description des=new Description();
-        String tb=js.getString("tb");
-        des.tbs.add(stb+" "+tb);
-        tb+=".";
+        JSONArray tbs= JSONArray.parseArray(JSON.toJSONString(js.get("tb")));
+        for(int i=0;i<stb.length;i++) {
+            des.tbs.add(stb[i] + " " + tbs.get(i));
+            tbs.set(i,tbs.get(i)+".");
+        }
+        String tb=tbs.getString(0);
         for(String s:attrs){
             des.attrs.add(tb+s);
         }
