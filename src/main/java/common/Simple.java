@@ -50,7 +50,7 @@ public class Simple {
     public static String getNES(String attr,String value){
         CodeTb codeTb =getCodetb(attr);
         if(codeTb ==null)return "";
-        return String.format("not exists ( %s and %s=%s.%s)", codeTb.getDM(value),attr, codeTb.tb, codeTb.dm);
+        return String.format("not exists ( %s )", codeTb.getDM(value,attr));
     }
 
     public static String getGMSFHM(Description des,String frm){

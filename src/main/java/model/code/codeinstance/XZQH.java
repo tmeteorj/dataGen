@@ -17,9 +17,17 @@ public class XZQH extends CodeTb {
         this.dm="bm";
         this.mc="mc";
     }
-
+    public static int idx=1;
     public String getDM(String value){
-        return String.format("select %s.%s from %s where %s.%s like \'%%%s%%\'", tb,dm, tb, tb,mc,value);
+        String dms=String.format("select %s.%s from %s where %s.%s like \'%%%s%%\'", tb+idx,dm, tb+" "+tb+idx, tb+idx,mc,value);
+        idx++;
+        return dms;
     }
 
+    public String getDM(String value,String attr){
+        String dms=String.format("select %s.%s from %s where %s.%s like \'%%%s%%\' and %s=%s.%s", tb+idx,dm, tb+" "+tb+idx, tb+idx,mc,value,
+                attr,tb+idx,dm);
+        idx++;
+        return dms;
+    }
 }

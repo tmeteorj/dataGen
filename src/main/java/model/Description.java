@@ -27,6 +27,69 @@ public class Description {
     public Map<String,String> ins;
     public Map<String,String> nes;
 
+    public void changeTB(String srcTB,String desTB){
+        for(int i=0;i<attrs.size();i++){
+            String elem=attrs.get(i);
+            if(elem.contains(srcTB)){
+                elem=elem.replace(srcTB,desTB);
+                attrs.set(i,elem);
+            }
+        }
+        for(int i=0;i<ids.size();i++){
+            String elem=ids.get(i);
+            if(elem.contains(srcTB)){
+                elem=elem.replace(srcTB,desTB);
+                ids.set(i,elem);
+            }
+        }
+        for(int i=0;i<tbs.size();i++){
+            String elem=tbs.get(i);
+            if(elem.equals(srcTB)){
+                elem=elem+" "+desTB;
+                tbs.set(i,elem);
+            }
+        }
+    }
+    public void changeMAP(String srcTB,String desTB,boolean value){
+        les = changeMAP(les, srcTB, desTB, value);
+        bgs = changeMAP(bgs, srcTB, desTB, value);
+        eqs = changeMAP(eqs, srcTB, desTB, value);
+        lks = changeMAP(lks, srcTB, desTB, value);
+        ins = changeMAP(ins, srcTB, desTB, value);
+        nes = changeMAP(nes, srcTB, desTB, value);
+    }
+    public Map<String,String> changeMAP(Map<String,String> map,String srcTB[],String desTB,boolean ck){
+        Map<String,String> h=new HashMap<String,String>();
+        for(Map.Entry<String,String> entry:map.entrySet()){
+            String key=entry.getKey();
+            String value=entry.getValue();
+            for(int i=0;i<srcTB.length;i++) {
+                if (ck && key.contains(srcTB[i])&&!key.contains(desTB)) {
+                    key = key.replace(srcTB[i], desTB+srcTB[i].substring(srcTB[i].indexOf(".")));
+                }
+                if (!ck && value.contains(srcTB[i])&&!value.contains(desTB)) {
+                    value = value.replace(srcTB[i], desTB+srcTB[i].substring(srcTB[i].indexOf(".")));
+                }
+            }
+            h.put(key,value);
+        }
+        return h;
+    }
+    public Map<String,String> changeMAP(Map<String,String> map,String srcTB,String desTB,boolean ck){
+        Map<String,String> h=new HashMap<String,String>();
+        for(Map.Entry<String,String> entry:map.entrySet()){
+            String key=entry.getKey();
+            String value=entry.getValue();
+            if(ck&&key.contains(srcTB)&&!key.contains(desTB)){
+                key=key.replace(srcTB,desTB);
+            }
+            if(!ck&&value.contains(srcTB)&&!value.contains(desTB)){
+                value=value.replace(srcTB,desTB);
+            }
+            h.put(key,value);
+        }
+        return h;
+    }
     public Description(String tbs[],String ids[],String attrs[]){
         Collections.addAll(this.tbs = new ArrayList<String>(), tbs);
         Collections.addAll(this.ids = new ArrayList<String>(), ids);
