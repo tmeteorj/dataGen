@@ -1,3 +1,21 @@
 {
-  ""
+  "tb":"js_tielu1",
+  "les":{
+  },
+  "bgs":{
+  },
+  "eqs":{
+    "train_date":"20150101",
+    "board_train_code":"C2020"
+  },
+  "lks":{
+    "from_station_name":"长沙",
+    "to_station_name":"南京"
+  },
+  "ins":{
+
+  },
+  "nes":{
+
+  }
 }

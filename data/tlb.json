@@ -1,0 +1,21 @@
+{
+  "tb":"js_tielu4",
+  "les":{
+  },
+  "bgs":{
+  },
+  "eqs":{
+    "train_date":"20160101",
+    "board_train_code":"K932"
+  },
+  "lks":{
+    "from_station_name":"江西",
+    "to_station_name":"黑龙江"
+  },
+  "ins":{
+
+  },
+  "nes":{
+
+  }
+}

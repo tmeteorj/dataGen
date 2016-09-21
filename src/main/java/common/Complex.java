@@ -25,11 +25,16 @@ public class Complex {
                            Description tlb,
                            Description rkc){
         String tls;
-        System.out.println("A with fz:\n"+(tls=aInB(rka,fza)));
-        System.out.println("Train with A:\n"+(tls=aInB(tla,tls)));
-        System.out.println("B with Train:\n"+(tls=Simple.getGMSFHM(rkb,String.format("(%s) js_tielu3",tls))));
-        System.out.println("Train with B:\n"+(tls=aInB(tlb,tls)));
-        System.out.println("C with B:\n"+(tls=Simple.getGMSFHM(rkc,String.format("(%s) js_tielu6",tls))));
+        tls=aInB(rka,fza);
+        //System.out.println("A with fz:\n"+tls);
+        tls=aInB(tla,tls);
+        //System.out.println("Train with A:\n"+tls);
+        tls=Simple.getGMSFHM(rkb,String.format("(%s) js_tielu3",tls));
+        //System.out.println("B with Train:\n"+tls);
+        tls=aInB(tlb,tls);
+        //System.out.println("Train with B:\n"+tls);
+        tls=Simple.getGMSFHM(rkc,String.format("(%s) js_tielu6",tls));
+        //System.out.println("C with B:\n"+tls);
         return tls;
     }
     public static void gen(){
